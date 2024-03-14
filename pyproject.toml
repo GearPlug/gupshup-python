@@ -2,7 +2,7 @@
 name = "gupshup-python"
 version = "0.1.0"
 description = "API wrapper for Gupshup written in Python"
-authors = ["Miguel Alejandro Cepeda <alejomjc2011@gmail.com>"]
+authors = ["Gearplug Apps <apps@gearplug.io>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "gupshup"}]
