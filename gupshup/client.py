@@ -1,3 +1,4 @@
+import json
 import requests
 
 from gupshup.exceptions import UnauthorizedError, WrongFormatInputError
@@ -6,7 +7,7 @@ from gupshup.exceptions import UnauthorizedError, WrongFormatInputError
 class Client(object):
     BASE_URL_MESSAGE = "http://api.gupshup.io/sm/api/v1/template/msg"
     BASE_URL_TEMPLATES = "https://api.gupshup.io/sm/api/v1/template/list/"
-    headers = {"Content-Type": "application/x-www-form-urlencoded", "Accept": "*/*"}
+    headers = {"Content-Type": "application/x-www-form-urlencoded", "Cache-Control": "no-cache"}
 
     def __init__(self, apikey=None, app_name=None):
         self.APIKEY = apikey
@@ -27,7 +28,7 @@ class Client(object):
                 data_vars = []
                 header_vars = []
                 footer_vars = []
-                for key, value in template.items():
+                for key, value in json.loads(template['containerMeta']).items():
                     if key == "data" or key == "header" or key == "footer":
                         for i in range(1, 10):
                             var = "{{" + str(i) + "}}"
